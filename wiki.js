@@ -1,9 +1,9 @@
 var artist = "lomepal";
 var result;
 
-function test(art) {fetch("https://fr.wikipedia.org/w/api.php?format=json&origin=*&action=query&prop=extracts&exintro=&explaintext=&titles="+ art, {
+fetch("https://fr.wikipedia.org/w/api.php?format=json&origin=*&action=query&prop=extracts&exintro=&explaintext=&titles="+ artist, {
 	    method: 'POST',
-	    headers: new Headers( {'Origin': '*','Api-User-Agent': 'Example/1.0'})
+	    headers: new Headers( {'Api-User-Agent': 'Example/1.0'})
 	        } ).
 	        then( function ( response ) {
 	        	return response.json()}).then (function (response) {
@@ -14,7 +14,8 @@ function test(art) {fetch("https://fr.wikipedia.org/w/api.php?format=json&origin
 	    for (k in t);
 	    	id = k;
 	    	console.log(t[id].extract);
+	    	result = t[id].extract;
+	    	document.getElementById("wikimedia").innerHTML = result;
 	});
-}
 
-console.log(test(artist));
+
