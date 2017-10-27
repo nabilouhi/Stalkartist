@@ -1,49 +1,302 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title>Stalkartist : Spotify</title>
- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
- <!-- <link rel="stylesheet"	href="../style/stylePapy.css" type="text/css" media="screen" /> -->
+	 <title>Stalkartist : Spotify</title>
+	 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	 <link rel="stylesheet"	href="style.css" type="text/css" media="screen" />
  
- 
- <script> 
-	var SpoArtist = "Worakls";
- 
-	var client_id = 'c55737eb90d7457abba4461d2b84f031';
-	var client_secret = '22327413c8124d6a900cda1fbcb50d64';
-	var redirect_uri = "http://localhost/Stalkartist/Spotify_downlad.html";
-	var accessToken = "BQDiLKzgufM4HLCPftm2RDfGqeKshkwL1whrpVvy5LW9LBZd9I2Y_B6oiMEkgEv1p_md6ms2-WHRYB_H50o1pqc4VcdRYqb4pdludsCgwu4wTiPiDIYsAnsLgnKzosj4QECYLUhyWlrNBPqqdA7ecJOUic6qJ1rur4k"
-	var worakls
-	
-	fetch("https://api.spotify.com/v1/search?q="+SpoArtist+"&type=artist", {
-		headers: {
-			Accept: "application/json",
-			Authorization: "Bearer "+accessToken
+	<script>
+		function getAccessToken(){
+			return document.getElementById("spoToken").value;
 		}
-	}).then(function(response) {
-		response.json().then(function(data){
-			worakls = data
-			alert(worakls.artists.items[0].id)
-		})
-	})
-	.catch(function(error) {
-		console.log('Request failed', error)
-	});
-	;
+		
+		function getDirection(){
+			var retour
+			fetch("https://api.spotify.com/v1/search?q="+document.getElementById("spoArtist").value+"&type=artist", {
+				headers: {
+					Accept: "application/json",
+					Authorization: "Bearer "+getAccessToken()
+				}
+			}).then(function(response) {
+				response.json().then(function(data){
+					retour = data.artists.items[0].id
+				})
+			})
+			.catch(function(error) {
+				console.log('Request failed', error)
+			});
+			return retour;
+		}
 	
-	
-	
-	
- 
- </script>
+		function getSpoToken() 
+		{ 
+			var accessToken =  document.getElementById("spoToken").value;
+			var spoArtist = document.getElementById("spoArtist").value;
+			var final_art
+			var final_tra
+			var final_alb
+			var final_rel
+			var result_artist
+			var id_tra = 0
+			var id_alb = 0
+			var id_rel = 0
+			
+			fetch("https://api.spotify.com/v1/search?q="+spoArtist+"&type=artist", {
+				headers: {
+					Accept: "application/json",
+					Authorization: "Bearer "+accessToken
+				}
+			}).then(function(response) {
+				response.json().then(function(data){
+					result_artist = data
+					getArtist(accessToken, result_artist.artists.items[0].id)
+					getAlbum(accessToken, result_artist.artists.items[0].id)
+					getTrack(accessToken, result_artist.artists.items[0].id)
+					getRelated(accessToken, result_artist.artists.items[0].id)
+				})
+			})
+			.catch(function(error) {
+				console.log('Request failed', error)
+			});
+		}
+		
+		function getAlbum2() 
+		{ 
+			var accessToken = document.getElementById("spoToken").value;
+			var spoArtist = document.getElementById("spoArtist").value;
+			var final_alb
+			
+			fetch("https://api.spotify.com/v1/search?q="+spoArtist+"&type=artist", {
+				headers: {
+					Accept: "application/json",
+					Authorization: "Bearer "+accessToken
+				}
+			})
+			.then(function(response) {
+				response.json().then(function(data){
+					result_artist = data
+					fetch("https://api.spotify.com/v1/artists/"+result_artist.artists.items[0].id+"/albums", {
+						headers: {
+							Accept: "application/json",
+							Authorization: "Bearer "+accessToken
+						}
+					}).then(function(response) {
+						response.json().then(function(data){
+							final_alb = data
+							random_alb = (Math.floor((Math.random() * final_alb.items.length) + 1))
+							document.getElementById('spo_image_alb').src=final_alb.items[random_alb].images[0].url
+							document.getElementById('spo_text_alb').innerHTML=final_alb.items[random_alb].name
+							document.getElementById('spo_link_alb').href=final_alb.items[random_alb].external_urls.spotify
+						})
+					})
+					.catch(function(error) {
+						console.log('Request failed', error)
+					});
+				})
+			})
+			.catch(function(error) {
+				console.log('Request failed', error)
+			});
+			
+			
+		}
+		
+		function getTrack2() 
+		{ 
+			var accessToken = document.getElementById("spoToken").value;
+			var spoArtist = document.getElementById("spoArtist").value;
+			var final_tra
+			
+			fetch("https://api.spotify.com/v1/search?q="+spoArtist+"&type=artist", {
+				headers: {
+					Accept: "application/json",
+					Authorization: "Bearer "+accessToken
+				}
+			})
+			.then(function(response) {
+				response.json().then(function(data){
+					result_artist = data
+					fetch("https://api.spotify.com/v1/artists/"+result_artist.artists.items[0].id+"/top-tracks?country=FR", {
+						headers: {
+							Accept: "application/json",
+							Authorization: "Bearer "+accessToken
+						}
+					}).then(function(response) {
+						response.json().then(function(data){
+							final_tra = data
+							random_tra = (Math.floor((Math.random() * final_tra.tracks.length) + 1))
+							document.getElementById('spo_text_tra').innerHTML=final_tra.tracks[random_tra].name
+							document.getElementById('spo_link_tra').href=final_tra.tracks[random_tra].external_urls.spotify
+						})
+					})
+					.catch(function(error) {
+						console.log('Request failed', error)
+					});
+				})
+			})
+			.catch(function(error) {
+				console.log('Request failed', error)
+			});
+			
+			
+		}
+		
+		function getRelated2() 
+		{ 
+			var accessToken = document.getElementById("spoToken").value;
+			var spoArtist = document.getElementById("spoArtist").value;
+			var final_rel
+			
+			fetch("https://api.spotify.com/v1/search?q="+spoArtist+"&type=artist", {
+				headers: {
+					Accept: "application/json",
+					Authorization: "Bearer "+accessToken
+				}
+			})
+			.then(function(response) {
+				response.json().then(function(data){
+					result_artist = data
+					fetch("https://api.spotify.com/v1/artists/"+result_artist.artists.items[0].id+"/related-artists", {
+						headers: {
+							Accept: "application/json",
+							Authorization: "Bearer "+accessToken
+						}
+					}).then(function(response) {
+						response.json().then(function(data){
+							final_rel = data
+							random_rel = (Math.floor((Math.random() * final_rel.artists.length) + 1))
+							document.getElementById('spo_image_rel').src=final_rel.artists[random_rel].images[0].url
+							document.getElementById('spo_text_rel').innerHTML=final_rel.artists[random_rel].name
+							document.getElementById('spo_link_rel').href=final_rel.artists[random_rel].external_urls.spotify
+							
+						})
+					})
+					.catch(function(error) {
+						console.log('Request failed', error)
+					});
+				})
+			})
+			.catch(function(error) {
+				console.log('Request failed', error)
+			});
+			
+			
+		}
+		
+		function getArtist(accessToken, direction){
+			fetch("https://api.spotify.com/v1/artists/"+direction, {
+				headers: {
+					Accept: "application/json",
+					Authorization: "Bearer "+accessToken
+				}
+			})
+			.then(function(response) {
+				response.json().then(function(data){
+					final_art = data
+					document.getElementById('spo_image_art').src=final_art.images[0].url
+					document.getElementById('spo_text_art').innerHTML=final_art.followers.total+" followers"
+					document.getElementById('spo_link_art').href=final_art.external_urls.spotify
+				})
+			})
+		}
+		
+		function getAlbum(accessToken, direction){
+			fetch("https://api.spotify.com/v1/artists/"+direction+"/albums", {
+				headers: {
+					Accept: "application/json",
+					Authorization: "Bearer "+accessToken
+				}
+			})
+			.then(function(response) {
+				response.json().then(function(data){
+					final_alb = data
+					document.getElementById('spo_image_alb').src=final_alb.items[0].images[0].url
+					document.getElementById('spo_text_alb').innerHTML=final_alb.items[0].name
+					document.getElementById('spo_link_alb').href=final_alb.items[0].external_urls.spotify;
+				})
+			})		
+		}
+		
+		function getTrack(accessToken, direction){
+			fetch("https://api.spotify.com/v1/artists/"+direction+"/top-tracks?country=FR", {
+				headers: {
+					Accept: "application/json",
+					Authorization: "Bearer "+accessToken
+				}
+			})
+			.then(function(response) {
+				response.json().then(function(data){
+					final_tra = data
+					document.getElementById('spo_text_tra').innerHTML=final_tra.tracks[0].name;
+					document.getElementById('spo_link_tra').href=final_tra.tracks[0].external_urls.spotify;
+				})
+			})
+		}
+		
+		function getRelated(accessToken, direction){
+			fetch("https://api.spotify.com/v1/artists/"+direction+"/related-artists", {
+				headers: {
+					Accept: "application/json",
+					Authorization: "Bearer "+accessToken
+				}
+			})
+			.then(function(response) {
+				response.json().then(function(data){
+					final_rel = data
+					document.getElementById('spo_image_rel').src = final_rel.artists[0].images[0].url
+					document.getElementById('spo_text_rel').innerHTML = final_rel.artists[0].name
+					document.getElementById('spo_link_rel').href=final_rel.artists[0].external_urls.spotify
+				})
+			})
+		}
+		
+		function mixColor(){
+			document.getElementById('spo_image_rel').src=1
+			document.getElementById('spo_image_rel').src=1
+			document.getElementById('spo_image_rel').src=1
+			document.getElementById('spo_image_rel').src=1
+		}
+		
+	</script>
  
  
 </head>
 <body>
+
+	<div id="spotify">
+		<h1>Spotify</h1>
+	 
+		<form method="post" action="https://developer.spotify.com/web-api/" target="_blank">
+			<input type="submit" value="Récupérer une clé d'activation (nécéssite un compte Spotify)" />
+		</form>
+		<form>
+			<p>Entrez votre artiste</p>
+			<input type="text" name="Token" id="spoArtist"/>
+			<p>Entrez votre clé d'activation</p>
+			<input type="text" name="Token" id="spoToken"/>
+			<input type="button" value="Envoyer TOKEN" onclick="getSpoToken();"/>
+		</form>
+		<input type="button" value="Autre titre" onclick="getTrack2();"/>
+		<input type="button" value="Autre album" onclick="getAlbum2();"/>
+		<input type="button" value="Autre artiste associé" onclick="getRelated2();"/>
+		<BR><BR>
+		<div id='spo_block_info'>
+			<div id='spo_min_gh'>
+				<h5 id="spo_text_art"></h5>
+				<a href="" id="spo_link_art"><img class="spo_image" id="spo_image_art" alt="Artiste"></a>
+			</div>
+			<div id='spo_min_dh'>
+				<h5 id="spo_text_alb"></h5>
+				<a href="" id="spo_link_alb"><img class="spo_image" id="spo_image_alb" alt="Album"></a>
+			</div>
+			<div id='spo_min_gb'>
+				<h5 id="spo_text_tra"></h5>
+				<a href="" id="spo_link_tra"><img class="spo_image" id="spo_image_tra" alt="Track" src="https://store-images.s-microsoft.com/image/apps.52923.13571498826857201.682c7ab2-b8a7-485f-a945-469983e8ded9.9ec0cf1f-5339-44f7-9aff-8a40151a2bfd?w=180&h=180&q=60"></a>
+			</div>
+			<div id='spo_min_db'>
+				<h5 id="spo_text_rel"></h5>
+				<a href="" id="spo_link_rel"><img class="spo_image" id="spo_image_rel" alt="Artiste associé"></a>
+			</div>
+		</div>
+	</div>
 </body>
-
-
-
-		
-		
-		
