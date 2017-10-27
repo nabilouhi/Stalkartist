@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Stalkartist : Spotify</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <!-- <link rel="stylesheet"	href="../style/stylePapy.css" type="text/css" media="screen" /> -->
+ 
+ 
+ <script> 
+	var SpoArtist = "Worakls";
+ 
+	var client_id = 'c55737eb90d7457abba4461d2b84f031';
+	var client_secret = '22327413c8124d6a900cda1fbcb50d64';
+	var redirect_uri = "http://localhost/Stalkartist/Spotify_downlad.html";
+	var accessToken = "BQDiLKzgufM4HLCPftm2RDfGqeKshkwL1whrpVvy5LW9LBZd9I2Y_B6oiMEkgEv1p_md6ms2-WHRYB_H50o1pqc4VcdRYqb4pdludsCgwu4wTiPiDIYsAnsLgnKzosj4QECYLUhyWlrNBPqqdA7ecJOUic6qJ1rur4k"
+	var worakls
+	
+	fetch("https://api.spotify.com/v1/search?q="+SpoArtist+"&type=artist", {
+		headers: {
+			Accept: "application/json",
+			Authorization: "Bearer "+accessToken
+		}
+	}).then(function(response) {
+		response.json().then(function(data){
+			worakls = data
+			alert(worakls.artists.items[0].id)
+		})
+	})
+	.catch(function(error) {
+		console.log('Request failed', error)
+	});
+	;
+	
+	
+	
+	
+ 
+ </script>
+ 
+ 
+</head>
+<body>
+</body>
+
+
+
+		
+		
+		
