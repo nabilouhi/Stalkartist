@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+	<nom>LANDOLSI</nom>
+	<prenom>Mohamed Amine</prenom>
+	<mail>medaminelandolsi@gmail.com</mail>
+	<naissance>22/05/1987</naissance>
+	<friend>
+		<nom>Roudmane</nom>
+		<prenom>Idriss</prenom>
+		<mail>idriss.roudmane@etu.univ-montp3.fr</mail>
+		<naissance>25/09/1994</naissance>
+	</friend>
+	<friend>
+		<nom>Ouhi</nom>
+		<prenom>Nabil</prenom>
+		<mail>nabilouhi@hotmail.com</mail>
+		<naissance>25/04/1994</naissance>
+	</friend>
+	<friend>
+		<nom>Delaforge</nom>
+		<prenom>Alexis</prenom>
+		<mail>alexis.delaforge@outlook.fr</mail>
+		<naissance>28/01/1995</naissance>
+	</friend>
