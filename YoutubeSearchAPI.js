@@ -12,8 +12,8 @@ function search2() {
    var key='AIzaSyAtz8IfLeVxdw-vvgdzdtxS2u9JzSUiy1g'	
 	var RQ ='https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q='+q2+'&type=video&key='+key+''; 
 
-	var result; // initialisation 
-	var integration; // initialisation
+	var result=""; // initialisation 
+	var integration=""; // initialisation
 	
 	// on effectue la requete à l'aide du fetch , on repupere la réponse qu'on lit en json 
 	// et pui à la moulinette on parrcours les données pour recupere les id des video 
@@ -22,9 +22,9 @@ function search2() {
 	fetch(RQ).then( 
 		function(response){
 			response.json().then(function(data){
-					for (i=0;i<5;i++) {
+					for (i=1;i<5;i++) {
 						result ='https://www.youtube.com/embed/'+ data.items[i].id.videoId;
-						integration +='<div style ="margin-top:5px"><iframe width="560" height="315" src="'+result+'" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe></div>';
+						integration +=' <div class="card"><iframe width="320" height="240" src="'+result+'" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe></div>';
 						box.innerHTML=integration;
 					}
 			})

@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>Index</title>
+    <meta charset="utf-8">
+     	<link rel="stylesheet" href="CSS/bootstrap/css/bootstrap.min.css">
+     		<link rel="stylesheet"	href="CSS/style.css"	type="text/css"	/>	
+  </head>
+  
+  <body>
+  
+  <!-- header -->
+  	<div class="container-fluid bg-1 text-center">
+  		<h1>STALKARTIST</h1>
+ 		<div id="buttons">
+      		<label > 
+      			<input class="form-control input-lg" id="query" value='ex : Bob Marley' type="text"/>
+      			<br>
+      			<button id="search-button" onclick="search2()" class="Xbutton">Search</button>
+      		</label>
+ 		</div>
+     </div>
+     
+     <!-- 4 API -->
+     <div class="container-fluid bg-2 text-center">
+		<div class="row">
+    		<div class="col-md-7" style="background-color:#FFDAB9;"><svg id="svgId" width="10" height="500"> </div> <!-- WikiBD-->
+    		<div class=" col-md-5" ><div class="album"><div class="album"><div class="row" id="box"></div></div> </div>  <!-- Youtube-->
+      	</div>
+      
+       <div class="row">
+    		<div class="col-md-8" ><svg id="svgId" width="10" height="500"></div><!-- Spotify-->
+    		<div class="col-md-4" style="background-color:#FFDAB9;"><svg id="svgId" width="10" height="500"></div><!-- ABD-->
+      </div> 
+     </div>
+      
+    
+    <script src="YoutubeSearchAPI.js"></script>
+  </body>
+</html>
+
+
+
