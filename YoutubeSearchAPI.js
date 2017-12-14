@@ -24,7 +24,7 @@ function search2() {
 			response.json().then(function(data){
 					for (i=1;i<5;i++) {
 						result ='https://www.youtube.com/embed/'+ data.items[i].id.videoId;
-						integration +=' <div class="card"><iframe width="320" height="240" src="'+result+'" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe></div>';
+						integration +=' <div class="col-sm-3 "><div class="embed-responsive embed-responsive-16by9"><iframe width="320" height="240" src="'+result+'" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe></div></div>';
 						box.innerHTML=integration;
 					}
 			})

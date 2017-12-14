@@ -1,80 +1,36 @@
-<html>
-  <head>
-    <title>Index</title>
-    <meta charset="utf-8">
-     	<link rel="stylesheet" href="CSS/bootstrap/css/bootstrap.min.css">
-     		<link rel="stylesheet"	href="CSS/style.css"	type="text/css"	/>	
-  </head>
-  
-  <body  class="app" ng-controller="AppController">
-  
-  <!-- header -->
-  	<div class="container-fluid bg-1 text-center">
-  		<h1>STALKARTIST</h1>
- 		<div id="buttons">
-      		<label > 
-      			<div id="search">
-      			<input class="form-control input-lg" id="query" placeholder='Bob Marley' type="text" ng-model="query"on-keyup-search/>
-      			  </div>
-      			<br>
-      			<button id="search-button" onclick="search2(),getSpoToken(),request()" class="Xbutton">Search</button>
-      		</label>
- 		</div>
-     </div>
-     
-     	<!-- Wikipedia -->
-     <div id="wikimedia"></div>
-     
-     
-     <!-- youtube -->
-    	<div class="row" id="box"></div> 
-    	
- 		<div class="row">
- 		
- 			<!-- Spotify -->
- 			<div class="col-sm-6  ">
-    			<div id="spotify" >
-				<h1>Spotify</h1>
-	 			<form method="post" action="https://developer.spotify.com/web-api/" target="_blank">
-					<input type="submit" value="Récupérer une clé d'activation (nécéssite un compte Spotify)" />
-				</form>
-				<form>
-					<p>Entrez votre artiste</p>
-					<input type="text" name="Token" id="spoArtist"/>
-					<p>Entrez votre clé d'activation</p>
-					<input type="text" name="Token" id="spoToken"/>
-					<input type="button" value="Envoyer TOKEN" onclick="getSpoToken();"/>
-				</form>
-				<input type="button" value="Autre titre" onclick="getTrack2();"/>
-				<input type="button" value="Autre album" onclick="getAlbum2();"/>
-				<input type="button" value="Autre artiste associé" onclick="getRelated2();"/>
-				<BR>
-				<BR>
-				<div id='spo_block_info'>
-					<div id='spo_min_gh'>
-						<h5 id="spo_text_art"></h5>
-						<a href="" id="spo_link_art"><img class="spo_image" id="spo_image_art" alt="Artiste"></a>
-					</div>
-					<div id='spo_min_dh'>
-						<h5 id="spo_text_alb"></h5>
-						<a href="" id="spo_link_alb"><img class="spo_image" id="spo_image_alb" alt="Album"></a>
-					</div>
-					<div id='spo_min_gb'>
-						<h5 id="spo_text_tra"></h5>
-						<a href="" id="spo_link_tra"><img class="spo_image" id="spo_image_tra" alt="Track" src="https://store-images.s-microsoft.com/image/apps.52923.13571498826857201.682c7ab2-b8a7-485f-a945-469983e8ded9.9ec0cf1f-5339-44f7-9aff-8a40151a2bfd?w=180&h=180&q=60"></a>
-					</div>
-					<div id='spo_min_db'>
-						<h5 id="spo_text_rel"></h5>
-						<a href="" id="spo_link_rel"><img class="spo_image" id="spo_image_rel" alt="Artiste associé"></a>
-					</div>
-				</div>
-			</div>
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		<link href="" rel="stylesheet" type="text/css" />
+		<link rel="shortcut icon" href="http://www.deezer.com/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="http://www.deezer.com/favicon.ico" type="image/x-icon" />
+		<link href="styles.css" rel="stylesheet">
+		<link href="img/sprite.css" rel="stylesheet">
+
+		<title ng-bind="$root.title">Deezer Light</title>
+
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.8.3.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
+		<script src="controllers.js"></script>
+	</head>
+
+<body class="app" ng-controller="AppController">
+
+	<div id="header">
+		
+		
+
+		<div id="search">
+			<input type="text" placeholder="Artist, album, track" id="search_input" ng-model="query" on-keyup-search>
 		</div>
-	
-	
-		<!-- Deezer-->
-	<div class="col-sm-6 ">
-		<div id="wrapper" class="layoutWrapper">
+
+		<div id="cover">
+			<a ng-href="{{playing_album_link}}" id="cover_link" ng-show="playing &amp;&amp; playing_cover_src"><img ng-src="{{playing_cover_src}}" width="80" height="80" class="inline" id="cover_image" /></a>
+		</div>
+	</div>
+
+	<div id="wrapper" class="layoutWrapper">
 
 		<div id="content">
 			<div id="menu">
@@ -207,27 +163,7 @@
 	</div>
 
 	<div id="dz-root"></div>
-	</div>
-</div>
-	
-	
-      
-      
+	<script src="http://cdn-files.deezer.com/js/min/dz.js"></script>
 
-    <script src="YoutubeSearchAPI.js"></script>
-    <script src="Spotify.js"></script>
-     <script src="wiki.js"></script>        
-     
-    <!-- Deezer-->
-       <script src="http://cdn-files.deezer.com/js/min/dz.js"></script>
-     <script src="deezer/controllers.js"></script>
-     <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.8.3.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
-		<link rel="shortcut icon" href="http://www.deezer.com/favicon.ico" type="image/x-icon" />
-		<link rel="icon" href="http://www.deezer.com/favicon.ico" type="image/x-icon" />
-		<link href="deezer/img/sprite.css" rel="stylesheet">
-  </body>
+</body>
 </html>
-
-
-

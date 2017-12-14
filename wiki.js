@@ -1,7 +1,6 @@
 function request() {
 	var artist = document.getElementById("query").value;
 	q2=capitalizeFirstLetter(artist);
-	console.log(q2);
 	var result;
 	fetch("https://fr.wikipedia.org/w/api.php?format=json&origin=*&action=query&prop=extracts&exintro=&explaintext=&titles="+ q2, {
 	    method: 'POST',
@@ -21,12 +20,15 @@ function request() {
 	    	add(result,artist);
 	});
 }
-
+	HTMLL="<div id='wikibox'> "
 function add(param,artist) {
-	if (param == "") 
-		document.getElementById("wikimedia").innerHTML = "L'artiste demandé n'a pas été trouvé sur wikipedia";
+	var Q = document.getElementById("query").value;
+	q2=capitalizeFirstLetter(Q);
+	document.getElementById("wikimedia").innerHTML = "";
+	if (param === ""  ) 
+		document.getElementById("wikimedia").innerHTML = HTMLL+"<h2>"+artist+"</h2><p>L'artiste demandé n'a pas été trouvé sur wikipedia </p></div>";
 	else
-		document.getElementById("wikimedia").innerHTML = "<center><b>"+artist+"</b></center><br>"+param;
+		document.getElementById("wikimedia").innerHTML = HTMLL+"<h2>"+artist+"</h2><br>"+param+"<br><p style='text-align:right'>Source: <a href='https://fr.wikipedia.org/wiki/"+q2+"'>Wikipedia</a></p></div>";
 }
 
 function capitalizeFirstLetter(string) {
@@ -37,4 +39,5 @@ function capitalizeFirstLetter(string) {
     	ind = string.indexOf(' ');
 	}
 	return string;
+
 }
