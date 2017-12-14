@@ -1,0 +1,34 @@
+.Xbutton {
+    background-color: Black; /* Green */
+    border: #E25D33 solid 2px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    
+    
+}
+
+.bg-1 { 
+      background-color: black; /* Green */
+      color: #ffffff;
+      padding-top: 40px;
+      padding-bottom: 50px;
+      margin:auto;
+  }
+ .bg-3 { 
+      background-color: #fff; /* White */
+      color: #555555;
+  }
+  
+ h1{
+ 	font-family:Courier New;
+ 	font-size: 70px;
+ 
+ }
+ 
+ #box{
+  right: 10px;
+ }
