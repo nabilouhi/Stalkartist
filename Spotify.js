@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	 <title>Stalkartist : Spotify</title>
-	 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	 <link rel="stylesheet"	href="style.css" type="text/css" media="screen" />
- 
-	<script>
+
 		function getAccessToken(){
 			return document.getElementById("spoToken").value;
 		}
 		
 		function getDirection(){
 			var retour
-			fetch("https://api.spotify.com/v1/search?q="+document.getElementById("spoArtist").value+"&type=artist", {
+			fetch("https://api.spotify.com/v1/search?q="+document.getElementById("query").value+"&type=artist", {
 				headers: {
 					Accept: "application/json",
 					Authorization: "Bearer "+getAccessToken()
@@ -31,7 +24,7 @@
 		function getSpoToken() 
 		{ 
 			var accessToken =  document.getElementById("spoToken").value;
-			var spoArtist = document.getElementById("spoArtist").value;
+			var spoArtist = document.getElementById("query").value;
 			var final_art
 			var final_tra
 			var final_alb
@@ -63,7 +56,7 @@
 		function getAlbum2() 
 		{ 
 			var accessToken = document.getElementById("spoToken").value;
-			var spoArtist = document.getElementById("spoArtist").value;
+			var spoArtist = document.getElementById("query").value;
 			var final_alb
 			
 			fetch("https://api.spotify.com/v1/search?q="+spoArtist+"&type=artist", {
@@ -104,7 +97,7 @@
 		function getTrack2() 
 		{ 
 			var accessToken = document.getElementById("spoToken").value;
-			var spoArtist = document.getElementById("spoArtist").value;
+			var spoArtist = document.getElementById("query").value;
 			var final_tra
 			
 			fetch("https://api.spotify.com/v1/search?q="+spoArtist+"&type=artist", {
@@ -144,7 +137,7 @@
 		function getRelated2() 
 		{ 
 			var accessToken = document.getElementById("spoToken").value;
-			var spoArtist = document.getElementById("spoArtist").value;
+			var spoArtist = document.getElementById("query").value;
 			var final_rel
 			
 			fetch("https://api.spotify.com/v1/search?q="+spoArtist+"&type=artist", {
@@ -257,46 +250,3 @@
 			document.getElementById('spo_image_rel').src=1
 		}
 		
-	</script>
- 
- 
-</head>
-<body>
-
-	<div id="spotify">
-		<h1>Spotify</h1>
-	 
-		<form method="post" action="https://developer.spotify.com/web-api/" target="_blank">
-			<input type="submit" value="Récupérer une clé d'activation (nécéssite un compte Spotify)" />
-		</form>
-		<form>
-			<p>Entrez votre artiste</p>
-			<input type="text" name="Token" id="spoArtist"/>
-			<p>Entrez votre clé d'activation</p>
-			<input type="text" name="Token" id="spoToken"/>
-			<input type="button" value="Envoyer TOKEN" onclick="getSpoToken();"/>
-		</form>
-		<input type="button" value="Autre titre" onclick="getTrack2();"/>
-		<input type="button" value="Autre album" onclick="getAlbum2();"/>
-		<input type="button" value="Autre artiste associé" onclick="getRelated2();"/>
-		<BR><BR>
-		<div id='spo_block_info'>
-			<div id='spo_min_gh'>
-				<h5 id="spo_text_art"></h5>
-				<a href="" id="spo_link_art"><img class="spo_image" id="spo_image_art" alt="Artiste"></a>
-			</div>
-			<div id='spo_min_dh'>
-				<h5 id="spo_text_alb"></h5>
-				<a href="" id="spo_link_alb"><img class="spo_image" id="spo_image_alb" alt="Album"></a>
-			</div>
-			<div id='spo_min_gb'>
-				<h5 id="spo_text_tra"></h5>
-				<a href="" id="spo_link_tra"><img class="spo_image" id="spo_image_tra" alt="Track" src="https://store-images.s-microsoft.com/image/apps.52923.13571498826857201.682c7ab2-b8a7-485f-a945-469983e8ded9.9ec0cf1f-5339-44f7-9aff-8a40151a2bfd?w=180&h=180&q=60"></a>
-			</div>
-			<div id='spo_min_db'>
-				<h5 id="spo_text_rel"></h5>
-				<a href="" id="spo_link_rel"><img class="spo_image" id="spo_image_rel" alt="Artiste associé"></a>
-			</div>
-		</div>
-	</div>
-</body>

@@ -85,11 +85,11 @@ angapp.controller("AppController", function($scope, $route, $routeParams, $locat
 	};
 
 	$scope.trigger_search = function(){
-		var search_value = $scope.search_value;
-		console.log(LOGNS, 'Search for', search_value);
+		var query = $scope.query;
+		console.log(LOGNS, 'Search for', query);
 
-		if (search_value) {
-			$location.path("/search/"+search_value);
+		if (query) {
+			$location.path("/search/"+query);
 		} else {
 			if ($scope.last_path) {
 				$location.path($scope.last_path);
@@ -103,9 +103,9 @@ angapp.controller("AppController", function($scope, $route, $routeParams, $locat
 
 	// --------------------------------------------------- Angular events
 
-	$scope.$watch('search_value', function(search_value, oldValue) {
-		if (search_value !== oldValue) {
-			console.log(LOGNS, 'watch search_value', search_value, oldValue);
+	$scope.$watch('query', function(query, oldValue) {
+		if (query !== oldValue) {
+			console.log(LOGNS, 'watch query', query, oldValue);
 			$scope.trigger_search();
 		}
 	});
@@ -271,23 +271,23 @@ angapp.controller("AppController", function($scope, $route, $routeParams, $locat
 				break;
 
 			case 'search':
-				var search_value = $scope.search_value = $routeParams.pattern;
+				var query = $scope.query = $routeParams.pattern;
 
-				DZ.api('/search?q=' + encodeURIComponent(search_value), function(response){
+				DZ.api('/search?q=' + encodeURIComponent(query), function(response){
 					console.log(LOGNS, 'search tracks', response.data);
 					$scope.search_tracks = response.data.slice(0, 10);
 					$scope.view = 'search';
 					$scope.$apply();
 				});
 
-				DZ.api('/search/album?q=' + encodeURIComponent(search_value), function(response){
+				DZ.api('/search/album?q=' + encodeURIComponent(query), function(response){
 					console.log(LOGNS, 'search album', response.data);
 					$scope.search_albums = response.data.slice(0, 10);
 					$scope.view = 'search';
 					$scope.$apply();
 				});
 
-				DZ.api('/search/artist?q=' + encodeURIComponent(search_value), function(response){
+				DZ.api('/search/artist?q=' + encodeURIComponent(query), function(response){
 					console.log(LOGNS, 'search artist', response.data);
 					$scope.search_artists = response.data.slice(0, 10);
 					$scope.view = 'search';
@@ -295,7 +295,7 @@ angapp.controller("AppController", function($scope, $route, $routeParams, $locat
 				});
 
 				$scope.view = 'loading';
-				$rootScope.title = 'Search: ' + search_value;
+				$rootScope.title = 'Search: ' + query;
 				$scope.$apply();
 				break;
 
