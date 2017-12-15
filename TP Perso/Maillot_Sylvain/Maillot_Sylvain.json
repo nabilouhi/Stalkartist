@@ -1,0 +1,17 @@
+{
+	"nom" : "Sylvain",
+	"prenom" : "Maillot",
+	"age" : "22 ans",
+	"Partners" : [
+		{
+		"nom" : "Orwells",
+		"prenom" : "Bob",
+		"metier" : "Artiste"
+		},
+		{
+		"nom" : "Cironse",
+		"prenom" : "Patrique",
+		"metier" : "Voiture"
+		}
+	]
+}

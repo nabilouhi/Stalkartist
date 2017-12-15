@@ -1,0 +1,15 @@
+<nom>Maillot</nom>
+<prenom>Sylvain</prenom>
+<age>22 ans</age>
+<Partners>
+	<partner>
+		<nom>Orwells</nom>
+		<prenom>Bob</prenom>
+		<metier>Artiste</metier>
+	</partner>
+	<partner>
+		<nom>Cironse</nom>
+		<prenom>Patrique</prenom>
+		<metier>Voiture</metier>
+	</partner>
+<Partners>

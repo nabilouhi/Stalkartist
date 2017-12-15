@@ -1,0 +1,22 @@
+<rdf:RDF
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:pop="http://xmlns.com/pop/0.1/">
+
+	<rdf:Person rdf:about="#Sylvain">
+		<pop:first_name>Sylvain</pop:first_name>
+		<pop:last_name>Maillot</pop:last_name>
+		<pop:age>22ans</pop:age>
+		<pop:knows>
+			<pop:Person rdf:about="#Bob">
+				<pop:first_name>Bob</pop:first_name>
+				<pop:last_name>Orwells</pop:last_name>
+				<pop:job>Artiste</pop:job>
+			</pop:Person>
+			<pop:Person rdf:about="#Patrique">
+				<pop:first_name>Patrique</pop:first_name>
+				<pop:last_name>Cironse</pop:last_name>
+				<pop:job>Voiture</pop:job>
+			</pop:Person>
+		</pop:knows>
+	</pop:Person>
+</rdf:RDF>
