@@ -1,9 +1,23 @@
-<html>
+<html ng-app="app">
   <head>
-    <title>Index</title>
+    <title>Stalkartist</title>
     <meta charset="utf-8">
+    
      	<link rel="stylesheet" href="CSS/bootstrap/css/bootstrap.min.css">
-     		<link rel="stylesheet"	href="CSS/style.css"	type="text/css"	/>	
+     		<link rel="stylesheet"	href="CSS/style.css"	type="text/css"	/>
+     		
+     		
+     		    <!-- Deezer-->
+     		<link rel="stylesheet" type="text/css" href="deezer/style.css"/>
+	  <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.8.3.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
+	    <script src="http://cdn-files.deezer.com/js/min/dz.js"></script>
+		<link rel="shortcut icon" href="http://www.deezer.com/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="http://www.deezer.com/favicon.ico" type="image/x-icon" />
+		<link href="deezer/img/sprite.css" rel="stylesheet">
+	  <script src="deezer/controllers.js"></script>
+	  
+	  
   </head>
   
   <body  class="app" ng-controller="AppController">
@@ -14,10 +28,18 @@
  		<div id="buttons">
       		<label > 
       			<div id="search">
-      			<input class="form-control input-lg" id="query" placeholder='Bob Marley' type="text" ng-model="query"on-keyup-search/>
+      			
+      			<input class="form-control input-lg" id="query" placeholder='Artiste' type="text" ng-model="query" on-keyup-search/>
       			  </div>
       			<br>
       			<button id="search-button" onclick="search2(),getSpoToken(),request()" class="Xbutton">Search</button>
+      			
+      			<!--Fonction : Search2 requet le contenu Youtube -->
+      			<!--Fonction : getSpoToken requete le contenu Spotify -->
+      			<!--Fonction : request requete le contenu wikipedia -->
+      			<!--Api deezer : voir avec mohammed amine -->
+      			
+      			
       		</label>
  		</div>
      </div>
@@ -28,19 +50,15 @@
      
      <!-- youtube -->
     	<div class="row" id="box"></div> 
-    	
- 		<div class="row">
  		
  			<!-- Spotify -->
- 			<div class="col-sm-6  ">
+ 		
     			<div id="spotify" >
 				<h1>Spotify</h1>
 	 			<form method="post" action="https://developer.spotify.com/web-api/" target="_blank">
 					<input type="submit" value="Récupérer une clé d'activation (nécéssite un compte Spotify)" />
 				</form>
 				<form>
-					<p>Entrez votre artiste</p>
-					<input type="text" name="Token" id="spoArtist"/>
 					<p>Entrez votre clé d'activation</p>
 					<input type="text" name="Token" id="spoToken"/>
 					<input type="button" value="Envoyer TOKEN" onclick="getSpoToken();"/>
@@ -69,18 +87,16 @@
 					</div>
 				</div>
 			</div>
-		</div>
+
 	
 	
 		<!-- Deezer-->
-	<div class="col-sm-6 ">
+<div  class="container text-center" style="padding-top: 10px">
+	
 		<div id="wrapper" class="layoutWrapper">
 
 		<div id="content">
 			<div id="menu">
-
-				<a href="#/albums" class="link_tabs" ng-class="{active: view == 'albums'||view == 'album'}">Albums</a>
-				<a href="#/artists" class="link_tabs" ng-class="{active: view == 'artists'}">Artists</a>
 
 			</div>
 
@@ -207,25 +223,14 @@
 	</div>
 
 	<div id="dz-root"></div>
+	
 	</div>
-</div>
-	
-	
-      
-      
+
 
     <script src="YoutubeSearchAPI.js"></script>
     <script src="Spotify.js"></script>
      <script src="wiki.js"></script>        
-     
-    <!-- Deezer-->
-       <script src="http://cdn-files.deezer.com/js/min/dz.js"></script>
-     <script src="deezer/controllers.js"></script>
-     <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.8.3.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
-		<link rel="shortcut icon" href="http://www.deezer.com/favicon.ico" type="image/x-icon" />
-		<link rel="icon" href="http://www.deezer.com/favicon.ico" type="image/x-icon" />
-		<link href="deezer/img/sprite.css" rel="stylesheet">
+
   </body>
 </html>
 

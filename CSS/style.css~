@@ -17,7 +17,7 @@
       margin:auto;
   }
  .bg-3 { 
-      background-color: #fff; /* White */
+      background-color: black;
       color: #555555;
   }
   
@@ -36,10 +36,11 @@
  }
  
   #wikibox{
-  padding-top: 20px;
+  padding-top: 10px;
   border: 5px solid grey;
   padding: 20px;
   margin: 5px;
+  margin-top: 10px;
   border-radius: 5%;
  }
  .spo_image{
