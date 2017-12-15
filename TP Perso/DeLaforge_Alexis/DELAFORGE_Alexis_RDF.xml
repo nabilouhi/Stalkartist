@@ -1,0 +1,34 @@
+<rdf:RDF
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:foaf="http://xmlns.com/foaf/0.1/">
+
+
+	<foaf:Person rdf:about="#Me">
+		<foaf:givenname>Alexis</foaf:givenname>
+		<foaf:family_name>Delaforge</foaf:family_name>
+		<foaf:birth>28/01/1995</foaf:birth>
+		<foaf:mail>alexis.delaforge@outlook.fr</foaf:mail>
+		<foaf:knows>
+			<foaf:Person rdf:about="#Pat">
+				<foaf:givenname>Patrick</foaf:givenname>
+				<foaf:family_name>Dupond</foaf:family_name>
+				<foaf:birth>01/01/1985</foaf:birth>
+				<foaf:mail>pat.dupond@gmail.com</foaf:mail>
+			</foaf:Person>
+
+			<foaf:Person rdf:about="#Lou">
+				<foaf:givenname>Louis</foaf:givenname>
+				<foaf:family_name>Banane</foaf:family_name>
+				<foaf:birth>20/07/1990</foaf:birth>
+				<foaf:mail>lbanane@hotmail.fr</foaf:mail>
+			</foaf:Person>
+
+			<foaf:Person rdf:about="#Sof">
+				<foaf:givenname>Sophie</foaf:givenname>
+				<foaf:family_name>Stique</foaf:family_name>
+				<foaf:birth>29/11/1994</foaf:birth>
+				<foaf:mail>sophiestique@gmx.com</foaf:mail>
+			</foaf:Person>
+		</foaf:knows>
+	</foaf:Person>
+</rdf:RDF>
