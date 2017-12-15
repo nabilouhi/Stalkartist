@@ -40,5 +40,6 @@ Je récupère que seulement l'idendifiant des 4 premières pour les afficher sur
 
 Wikipedia section : 
 
+Je recupere uniquement le resume des pages wikipedia car c'est le seul contenu que je peux recuperer dont je suis sur de sa presence sur toutes les pages des artistes !
 
 Deezer section : 
