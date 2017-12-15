@@ -1,0 +1,24 @@
+{
+	"nom" : "BELKHEEROUBI",
+	"prenom" : "Abderrahmane",
+	"mail" : "abd230593@gmail.com",
+	"naissance" : "23/05/1993",
+	"friend" : [{
+		"nom" : "Roudmane",
+		"prenom" : "Idriss",
+		"mail" : "idriss.roudmane@etu.univ-montp3.fr",
+		"naissance" : "25/09/1994"
+	},
+	{
+		"nom" : "Ouhi",
+		"prenom" : "Nabil",
+		"mail" : "nabilouhi@hotmail.com",
+		"naissance" : "25/04/1994"
+	},
+	{
+		"nom" : "Delaforge",
+		"prenom" : "Alexis",
+		"mail" : "alexis.delaforge@outlook.fr",
+		"naissance" : "28/01/1995"
+	}]
+}
