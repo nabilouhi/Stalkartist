@@ -1,0 +1,29 @@
+<rdf:RDF
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:foaf="http://xmlns.com/foaf/0.1/">
+<!-- foaf friend of a friend -->
+
+	<rdf:Person rdf:about="#Me">
+		<foaf:givenname>Nabil</foaf:givenname>
+		<foaf:family_name>Ouhi</foaf:family_name>
+		<foaf:birthday>21ans</foaf:birthday>
+		<foaf:knows>
+			<foaf:Person rdf:about="#Alexis">
+				<foaf:givenname>Alexis</foaf:givenname>
+				<foaf:family_name>Delaforge</foaf:family_name>
+				<foaf:birthday>23 ans</foaf:birthday>
+				<foaf:knows>
+			</foaf:Person>
+			<foaf:Person rdf:about="#Sylvain">
+				<foaf:givenname>Sylvain</foaf:givenname>
+				<foaf:family_name>maillot</foaf:family_name>
+				<foaf:tel>22 ans</foaf:tel>
+			</foaf:Person>
+			<foaf:Person rdf:about="#Momo">
+				<foaf:givenname>momo</foaf:givenname>
+				<foaf:family_name>Landolsi</foaf:family_name>
+				<foaf:birth>30 ans</foaf:birth>
+			</foaf:Person>
+		</foaf:knows>
+	</foaf:Person>
+</rdf:RDF>

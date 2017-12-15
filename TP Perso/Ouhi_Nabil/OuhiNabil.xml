@@ -1,0 +1,26 @@
+
+<contactPerso>
+	<nom>Ouhi</nom>
+	<prenom>Nabil</prenom>
+	<age>23 ans</age>
+	<FriendList>
+		<friend>
+			<nom>Delaforge</nom>
+			<prenom>Alexis</prenom>
+			<age>22 ans</age>
+			<tel>06123456</tel>
+		</friend>
+		<friend>
+			<nom>Maillot</nom>
+			<prenom>Sylvain</prenom>
+			<age>21 ans</age>
+			<tel>06123456</tel>
+		</friend>
+		<friend>
+			<nom>Landolsi</nom>
+			<prenom>Momo</prenom>
+			<age>30 ans</age>
+			<tel>06123456</tel>
+		</friend>
+	<FriendList>
+</contactPerso>

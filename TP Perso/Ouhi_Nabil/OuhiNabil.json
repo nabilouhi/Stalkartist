@@ -1,0 +1,25 @@
+{
+	"nom" : "Ouhi",
+	"prenom" : "Nabil",
+	"age" : "23 ans",
+	"FriendList" : [
+		{
+		"nom" : "Delaforge",
+		"prenom" : "Alexis",
+		"age" : "23 ans",
+		"tel" : "06871234",
+		},
+		{
+		"nom" : "Maillot",
+		"prenom" : "Sylvain",
+		"age" : "22 ans",
+		"tel" : "06871234",
+		},	
+		{
+		"nom" : "Landolsi",
+		"prenom" : "Momo",
+		"age" : "30 ans",
+		"tel" : "06871234",
+		}
+	]
+}
